@@ -124,11 +124,19 @@ public class ListApsFragment extends Fragment {
             //Se carga los datos a obtener
             GetListApps getListApps = new GetListApps();
             FeedDTO feed;
+            try {
+                //Se envia la peticion
+                feed = getListApps.obtenerDatos();
+                return feed;
+            }
+            catch (Exception e){
 
-            //Se envia la peticion
-            feed=getListApps.obtenerDatos();
+                Log.d(ConstantesGenerales.TAG,"No se pudo conectar");
 
-            return feed;
+
+                return null;
+            }
+
         }
 
         @Override

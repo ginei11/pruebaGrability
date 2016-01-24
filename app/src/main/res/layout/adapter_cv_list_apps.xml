@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/cv"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/adaptercardview"
+    >
+
+    <RelativeLayout
+        android:id="@+id/item_cv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_cardview"
+        android:clickable="true"
+        android:focusable="true"
+        >
+
+        <ImageView
+            android:id="@+id/img_app"
+            android:layout_width="@dimen/adaptercardview_imgwidth"
+            android:layout_height="@dimen/adaptercardview_imgheight"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/abc_action_bar_overflow_padding_start_material"
+            android:layout_marginRight="16dp"
+            android:scaleType="fitCenter"
+            android:background="@mipmap/ic_app"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_app"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/title_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre APP"
+                android:textColor="@color/textPrimaryColor"
+                android:textSize="@dimen/title"
+                />
+
+            <TextView
+                android:id="@+id/subtitle_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_rv"
+                android:text="Descripcion"
+                android:textColor="@color/textPrimaryColor"
+                android:textSize="@dimen/title"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            >
+
+            <TextView
+                android:id="@+id/txt_artist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="artista"
+                android:textColor="@color/textPrimaryColor" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">PruebaGrability</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="listaApps">aca ira la lista de apps</string>
+    <string name="tituloCargando">Cargando</string>
+    <string name="mensajeCargando">Por favor espere ...</string>
+    <string name="mensajeBuscando">Buscando lista de apps</string>
+
+    <string name="mensajeAppsNoEncontrada">No se encontraron apps</string>
+</resources>

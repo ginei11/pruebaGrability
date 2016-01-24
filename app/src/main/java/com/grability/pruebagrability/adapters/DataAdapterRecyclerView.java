@@ -1,6 +1,8 @@
 package com.grability.pruebagrability.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import com.grability.pruebagrability.R;
 import com.grability.pruebagrability.modelo.Entry;
+import com.grability.pruebagrability.utilidades.PopUpActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -40,9 +43,11 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
         private ImageView iconoApp;
         private TextView titleRv, subtitleRv, txtArtist;
         private RelativeLayout item_cv;
+        private View view;
 
         APPSViewHolder(View itemView) {
             super(itemView);
+            view=itemView;
             cv = (CardView) itemView.findViewById(R.id.cv);
             iconoApp= (ImageView) itemView.findViewById(R.id.img_app);
             titleRv = (TextView) itemView.findViewById(R.id.title_rv);
@@ -85,7 +90,7 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
         //setea el titulo de la app
         driverViewHolder.titleRv.setText(entries.get(i).getImName().getLabel());
         //setea la descripcion de la app
-        driverViewHolder.subtitleRv.setText(entries.get(i).getImPrice().getAttributes().getAmount() + " "+ entries.get(i).getImPrice().getAttributes().getCurrency());
+        driverViewHolder.subtitleRv.setText(entries.get(i).getCategory().getAttributes().getLabel());
 
         driverViewHolder.txtArtist.setText(entries.get(i).getImArtist().getLabel());
 
@@ -96,23 +101,25 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
                 .into(driverViewHolder.iconoApp);
 
 
-        // Listener para mostrar un submenu en el icono de opciones de la lista
-        driverViewHolder.iconoApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,"hizo clic en la app",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        //Listener para la visualizacion de datos del conductor
+        // Listener para mostrar descripcion en la lista
         driverViewHolder.item_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ir al mapa
+
+                Intent popUpIntent = new Intent(context, PopUpActivity.class);
+
+                Bundle datos = new Bundle();
+                datos.putSerializable("entry", entries.get(i));
+
+                popUpIntent.putExtras(datos);
+                popUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(popUpIntent);
+
+
 
             }
         });
+
     }
 
 

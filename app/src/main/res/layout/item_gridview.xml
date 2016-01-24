@@ -4,29 +4,30 @@
     android:layout_height="200dp">
 
     <RelativeLayout
+        android:id="@+id/item_gridView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imagen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerInside"
+        android:scaleType="fitXY"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="@dimen/adaptergrid_imgwidth"
+        android:layout_height="@dimen/adaptergrid_imgheight"
+        />
 
     <TextView
         android:id="@+id/nombre"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/tituloStyle"
         android:background="@color/colorPrimary"
         android:maxLines="1"
         android:gravity="center_horizontal"
-        android:text="TEXTO"
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        android:textColor="@android:color/white" />
+        android:text="TEXTO" />
 
     </RelativeLayout>
 

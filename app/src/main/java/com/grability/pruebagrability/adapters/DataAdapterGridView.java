@@ -1,16 +1,20 @@
 package com.grability.pruebagrability.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grability.pruebagrability.R;
 import com.grability.pruebagrability.modelo.Entry;
+import com.grability.pruebagrability.utilidades.PopUpActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -67,6 +71,8 @@ public class DataAdapterGridView extends BaseAdapter {
         final Context mContext=view.getContext();
         ImageView imagen = (ImageView) view.findViewById(R.id.imagen);
         TextView nombre = (TextView) view.findViewById(R.id.nombre);
+        RelativeLayout item_gridView = (RelativeLayout) view.findViewById(R.id.item_gridView);
+
 
         //seteamos la imagen por defecto
         imagen.setImageResource(R.mipmap.ic_no_image);
@@ -79,17 +85,21 @@ public class DataAdapterGridView extends BaseAdapter {
         //Seteamos el texto debajo de la imagen
         nombre.setText(entries.get(position).getImName().getLabel());
 
-        imagen.setOnLongClickListener(new View.OnLongClickListener() {
+        item_gridView.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(context,"hizo click", Toast.LENGTH_SHORT).show();
-            //    Mostramos un mensaje
-            //    Ventanas ventanas= new Ventanas();
-            //    ventanas.alert(mContext,"","La foto tiene la siguiente carasteristica: "+dataGrids[position].getFeature() );
-            //    Snackbar.make(finalView.getRootView(),dataGrids[position].getFeature() , Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                return false;
+            public void onClick(View v) {
+                Intent popUpIntent = new Intent(context, PopUpActivity.class);
+
+                Bundle datos = new Bundle();
+                datos.putSerializable("entry", entries.get(position));
+
+                popUpIntent.putExtras(datos);
+                popUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(popUpIntent);
             }
         });
+
 
         return view;
     }

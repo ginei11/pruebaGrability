@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ventanas</string>
+    <string name="alertAcceptButton">Ok</string>
+    <string name="alertCancelButton">cancelar</string>
+</resources>

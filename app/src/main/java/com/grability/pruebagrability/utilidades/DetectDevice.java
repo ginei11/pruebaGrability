@@ -33,29 +33,5 @@ public class DetectDevice {
         }
         else return tabletSize;
 
-        /*
-        boolean device_large = ((activityContext.getResources().getConfiguration().screenLayout &
-                Configuration.SCREENLAYOUT_SIZE_MASK) ==
-                Configuration.SCREENLAYOUT_SIZE_LARGE);
-
-        if (device_large) {
-            DisplayMetrics metrics = new DisplayMetrics();
-            Activity activity = (Activity) activityContext;
-            activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-            if (metrics.densityDpi == DisplayMetrics.DENSITY_DEFAULT
-                    || metrics.densityDpi == DisplayMetrics.DENSITY_HIGH
-                    || metrics.densityDpi == DisplayMetrics.DENSITY_MEDIUM
-                    || metrics.densityDpi == DisplayMetrics.DENSITY_TV
-                    || metrics.densityDpi == DisplayMetrics.DENSITY_XHIGH) {
-                Log.d("DetectDevice","es tablet");
-
-                return true;
-            }
-        }
-        Log.d("DetectDevice", "NO es tablet");
-        return false;
-        */
-
     }
 }
