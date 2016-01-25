@@ -14,7 +14,7 @@ import com.grability.pruebagrability.R;
  * Copyright (c) 2015 - 2016 Carlos Arturo Reyes Romero, All Rights reserved
  * <p>
  * -
- * Descripcion de la clase
+ * Detecta el si se trata de un smartphone o una tablet
  * -
  * Autor:		Carlos Arturo Reyes Romero
  * email:		carr900@gmail.com
@@ -24,6 +24,12 @@ import com.grability.pruebagrability.R;
  */
 public class DetectDevice {
 
+    /**
+     * Metodo que hace uso del xml para saber si la aplicacion se
+     * esta usando desde un smartphone o una tablet
+     * @param activityContext
+     * @return true si se trata de una tablet
+     */
     public static boolean isTabletDevice(Context activityContext) {
 
         boolean tabletSize = activityContext.getResources().getBoolean(R.bool.isTablet);

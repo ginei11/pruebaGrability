@@ -61,15 +61,13 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
 
 
     private List<Entry> entries = new ArrayList<Entry>();
-
     private Context context;
-    public static int restante = 0;
 
 
     public DataAdapterRecyclerView(Context context, List<Entry> entries) {
         this.context = context;
         this.entries = entries;
-        restante = 0;
+
     }
 
     @Override
@@ -91,9 +89,10 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
         driverViewHolder.titleRv.setText(entries.get(i).getImName().getLabel());
         //setea la descripcion de la app
         driverViewHolder.subtitleRv.setText(entries.get(i).getCategory().getAttributes().getLabel());
-
+        //Cargamos el nombre del desarrollador
         driverViewHolder.txtArtist.setText(entries.get(i).getImArtist().getLabel());
 
+        //Se carga la imagen del objeto
         Picasso.with(context).
                 load(entries.get(i).getImImage().get(0).getLabel())
                 .placeholder(context.getResources().getDrawable(R.mipmap.ic_app))
@@ -107,12 +106,13 @@ public class DataAdapterRecyclerView extends RecyclerView.Adapter<DataAdapterRec
             public void onClick(View v) {
 
                 Intent popUpIntent = new Intent(context, PopUpActivity.class);
-
+                //pasamos el objeto a la actividad
                 Bundle datos = new Bundle();
                 datos.putSerializable("entry", entries.get(i));
 
                 popUpIntent.putExtras(datos);
                 popUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //Se inicia la actividad
                 context.startActivity(popUpIntent);
 
 

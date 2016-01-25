@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
  * Copyright (c) 2015 - 2016 Carlos Arturo Reyes Romero, All Rights reserved
  * <p/>
  * -
- * Descripcion de la clase
+ * Clase que hace uso de la libreria GSON
  * -
  * Autor:		Carlos Arturo Reyes Romero
  * email:		carr900@gmail.com

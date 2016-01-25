@@ -18,7 +18,7 @@ import java.util.HashMap;
  * Copyright (c) 2015 - 2016 Carlos Arturo Reyes Romero, All Rights reserved
  * <p/>
  * -
- * Descripcion de la clase
+ * Clase para consumir webservices
  * -
  * Autor:		Carlos Arturo Reyes Romero
  * email:		carr900@gmail.com

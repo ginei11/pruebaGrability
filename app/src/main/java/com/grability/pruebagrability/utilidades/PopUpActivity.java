@@ -20,10 +20,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.grability.pruebagrability.R;
 import com.grability.pruebagrability.constants.ConstantesGenerales;
@@ -42,6 +40,7 @@ public class PopUpActivity extends Activity implements OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_popup);
 
+        //Se obtiene el objeto entry
         Bundle datos = getIntent().getExtras();
         entry = new Entry();
 
@@ -55,15 +54,16 @@ public class PopUpActivity extends Activity implements OnClickListener {
         String descripcion = "" + entry.getSummary().getLabel();
         String fecha = "Fecha: " + entry.getImReleaseDate().getLabel();
 
+        //Se setean los valores en el layout
         TextView mTxtTitulo = (TextView) findViewById(R.id.txt_titulo);
         TextView mTxtMensaje = (TextView) findViewById(R.id.txt_mensaje);
-
         TextView mTxtFecha = (TextView) findViewById(R.id.txt_fecha);
 
         Button mBtnAceptar = (Button) findViewById(R.id.acceptBtn);
 
         mPhoto = (ImageView) findViewById(R.id.photo);
 
+        //Se carga la imagen
         Picasso.with(getApplicationContext()).
                 load(entry.getImImage().get(0).getLabel())
                 .placeholder(getApplicationContext().getResources().getDrawable(R.mipmap.ic_app))
@@ -71,11 +71,11 @@ public class PopUpActivity extends Activity implements OnClickListener {
                 .into(mPhoto);
 
        
-
+        //Se setean los mensajes
         mTxtTitulo.setText(titulo);
         mTxtMensaje.setText(descripcion);
         mTxtFecha.setText(fecha);
-
+        //Se crea un listener para cerrar la app
         mBtnAceptar.setOnClickListener(this);
     }
 

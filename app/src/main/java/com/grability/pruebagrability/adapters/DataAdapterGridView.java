@@ -68,7 +68,7 @@ public class DataAdapterGridView extends BaseAdapter {
             view = inflater.inflate(R.layout.item_gridview, viewGroup, false);
         }
 
-        final Context mContext=view.getContext();
+
         ImageView imagen = (ImageView) view.findViewById(R.id.imagen);
         TextView nombre = (TextView) view.findViewById(R.id.nombre);
         RelativeLayout item_gridView = (RelativeLayout) view.findViewById(R.id.item_gridView);
@@ -76,7 +76,7 @@ public class DataAdapterGridView extends BaseAdapter {
 
         //seteamos la imagen por defecto
         imagen.setImageResource(R.mipmap.ic_no_image);
-        //se carga en lina las fotos
+        //se carga en linea las fotos
         Picasso.with(context).
                 load(entries.get(position).getImImage().get(0).getLabel())
                 .placeholder(context.getResources().getDrawable(R.mipmap.ic_app))
@@ -85,12 +85,14 @@ public class DataAdapterGridView extends BaseAdapter {
         //Seteamos el texto debajo de la imagen
         nombre.setText(entries.get(position).getImName().getLabel());
 
+        //Se agrega un listener a cada item
         item_gridView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent popUpIntent = new Intent(context, PopUpActivity.class);
 
+                //pasamos el objeto entry a la siguiente actividad
                 Bundle datos = new Bundle();
                 datos.putSerializable("entry", entries.get(position));
 
@@ -100,12 +102,7 @@ public class DataAdapterGridView extends BaseAdapter {
             }
         });
 
-
         return view;
     }
-
-
-
-
 
 }

@@ -85,18 +85,6 @@ public class ListApsFragment extends Fragment {
 
     }
 
-    private void screenSmartphone(){
-
-
-
-
-
-    }
-
-
-
-
-
 
     /**
      * Tarea asincrona para obtener los datos
@@ -132,8 +120,6 @@ public class ListApsFragment extends Fragment {
             catch (Exception e){
 
                 Log.d(ConstantesGenerales.TAG,"No se pudo conectar");
-
-
                 return null;
             }
 
