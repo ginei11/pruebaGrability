@@ -1,5 +1,6 @@
 package com.grability.pruebagrability;
 
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import com.grability.pruebagrability.adapters.SectionsPagerAdapter;
 import com.grability.pruebagrability.fragments.ListApsFragment;
+import com.grability.pruebagrability.utilidades.DetectDevice;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,10 +43,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        boolean isTablet= DetectDevice.isTabletDevice(getApplicationContext());
+        if (isTablet){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+        else{
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.ic_glogo);
+        toolbar.setTitle(R.string.app_name);
+        toolbar.setSubtitle(R.string.app_empresa);
+       // toolbar.setLogo(R.mipmap.ic_grability);
+
+
+
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());

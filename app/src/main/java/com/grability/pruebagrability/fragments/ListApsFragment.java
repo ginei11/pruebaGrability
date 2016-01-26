@@ -1,6 +1,7 @@
 package com.grability.pruebagrability.fragments;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -33,7 +34,7 @@ public class ListApsFragment extends Fragment {
     private static RecyclerView rv;
     private Context context;
     private OnFragmentInteractionListener mListener;
-
+    private Ventanas ventanas;
 
     public ListApsFragment() {
 
@@ -70,17 +71,19 @@ public class ListApsFragment extends Fragment {
 
         if (isTablet)
         {
+
             gridView = (GridView) view.findViewById(R.id.grid);
         }
         else
         {
+
             rv = (RecyclerView) view.findViewById(R.id.rv);
             LinearLayoutManager llm = new LinearLayoutManager(context);
             rv.setLayoutManager(llm);
             rv.setHasFixedSize(true);
         }
-
-        new getListApps().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        ventanas= new Ventanas();
+        new getListApps(ventanas).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         return view;
 
     }
@@ -93,9 +96,9 @@ public class ListApsFragment extends Fragment {
 
         private Ventanas ventanas;
 
-        public   getListApps( )
+        public   getListApps(Ventanas ventanas)
         {
-
+          this.ventanas =ventanas;
         }
 
         @Override
@@ -103,7 +106,7 @@ public class ListApsFragment extends Fragment {
             super.onPreExecute();
             Log.d(ConstantesGenerales.TAG, "Inicia tarea obtener lista de apps");
             //Se muestra una alerta cargando
-            ventanas= new Ventanas();
+           // ventanas= new Ventanas();
             ventanas.loadingIndeterminate(context, getString(R.string.tituloCargando), getString(R.string.mensajeBuscando, ""));
         }
 
@@ -153,19 +156,9 @@ public class ListApsFragment extends Fragment {
             catch (Exception ex){}
         }
 
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -191,6 +184,12 @@ public class ListApsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        ventanas.stopLoading();
     }
 
 

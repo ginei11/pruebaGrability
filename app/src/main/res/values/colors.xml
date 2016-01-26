@@ -11,6 +11,6 @@
     <color name="black">#000000</color>
 
     <color name="textPrimaryColor">#000000</color>
-    <color name="backGround">#e1cccc</color>
+    <color name="backGround">#f2f2f2</color>
 
 </resources>

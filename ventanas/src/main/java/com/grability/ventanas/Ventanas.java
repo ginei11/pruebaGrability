@@ -2,10 +2,11 @@ package com.grability.ventanas;
 
 import android.content.Context;
 import android.text.InputType;
-import android.view.View;
+import android.util.Log;
+
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.elasticbeanstalk.ventanas.R;
+import com.grability.ventanas.R;
 
 /**
  * **************************************************************
@@ -74,10 +75,16 @@ public class Ventanas {
                 .progress(true, 0)
                 .cancelable(false)
                 .show();
+
     }
 
     public void stopLoading() {
-        dialogProgress.cancel();
+        try {
+            dialogProgress.cancel();
+        }
+        catch (Exception e){
+            Log.d("Error","Ocurrio un error al cancelar el loading");
+        }
     }
 
 
